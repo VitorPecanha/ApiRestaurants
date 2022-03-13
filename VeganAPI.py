@@ -6,7 +6,7 @@ import ast
 
 class Users(Resource):
     def get(self):
-        data = pd.read_csv('users.csv')
+        data = pd.read_csv('ApiRestaurants/users.csv')
         return {'data': data.to_dict()}, 200
 
     def post(self):
@@ -25,13 +25,14 @@ class Users(Resource):
             'locations' : [[]]
         })
 
-        data = pd.read_csv('users.csv')
+        data = pd.read_csv('ApiRestaurants/users.csv')
         data = data.append(new_data, ignore_index=True)
         data.to_csv('users.csv', index=False)
         return {'data': data.to_dict()}, 200
+
 class Locations(Resource):
     def get(self):
-        data = pd.read_csv('locations.csv')
+        data = pd.read_csv('ApiRestaurants/locations.csv')
         data = data.to_dict()
         return {'data': data}, 200
 
